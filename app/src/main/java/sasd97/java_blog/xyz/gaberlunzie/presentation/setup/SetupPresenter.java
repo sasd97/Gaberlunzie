@@ -4,7 +4,6 @@ import android.util.Log;
 
 import com.arellomobile.mvp.MvpPresenter;
 
-import sasd97.java_blog.xyz.gaberlunzie.presentation.converter.ConverterPresenter;
 import sasd97.java_blog.xyz.gaberlunzie.utils.SwipeDetector;
 
 /**

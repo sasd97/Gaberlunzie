@@ -1,4 +1,4 @@
-package sasd97.java_blog.xyz.gaberlunzie.presentation.converter;
+package sasd97.java_blog.xyz.gaberlunzie.presentation.main;
 
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -14,9 +14,10 @@ import sasd97.java_blog.xyz.gaberlunzie.navigation.AppFragmentRouter;
 import sasd97.java_blog.xyz.gaberlunzie.navigation.Router;
 import sasd97.java_blog.xyz.gaberlunzie.navigation.fragments.FragmentCommand;
 
-public class ConverterActivity extends MvpAppCompatActivity implements ConverterView {
+public class MainActivity extends MvpAppCompatActivity implements MainView {
 
-    @InjectPresenter ConverterPresenter presenter;
+    @InjectPresenter
+    MainPresenter presenter;
 
     @BindView(R.id.toolbar) Toolbar toolbar;
 

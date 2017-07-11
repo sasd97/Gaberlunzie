@@ -11,7 +11,7 @@ import sasd97.java_blog.xyz.gaberlunzie.navigation.activities.ActivityCommand;
 import sasd97.java_blog.xyz.gaberlunzie.navigation.activities.ActivityCommandDecorator;
 import sasd97.java_blog.xyz.gaberlunzie.navigation.activities.Finish;
 import sasd97.java_blog.xyz.gaberlunzie.navigation.activities.MoveForward;
-import sasd97.java_blog.xyz.gaberlunzie.presentation.converter.ConverterActivity;
+import sasd97.java_blog.xyz.gaberlunzie.presentation.main.MainActivity;
 
 /**
  * Created by alexander on 11/07/2017.
@@ -41,7 +41,7 @@ public class SplashScreenActivity extends MvpAppCompatActivity
     }
 
     private ActivityCommand obtainNavigationCommand() {
-        ActivityCommandDecorator command = new MoveForward(this, ConverterActivity.class);
+        ActivityCommandDecorator command = new MoveForward(this, MainActivity.class);
         command.setNext(new Finish(this));
         return command;
     }

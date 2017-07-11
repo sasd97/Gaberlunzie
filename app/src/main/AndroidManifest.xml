@@ -21,7 +21,7 @@
         </activity>
 
         <activity
-            android:name=".presentation.converter.ConverterActivity"
+            android:name=".presentation.main.MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>
 </manifest>
