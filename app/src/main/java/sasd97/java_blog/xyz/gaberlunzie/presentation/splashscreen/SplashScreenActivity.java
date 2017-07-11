@@ -11,14 +11,13 @@ import sasd97.java_blog.xyz.gaberlunzie.navigation.activities.ActivityCommand;
 import sasd97.java_blog.xyz.gaberlunzie.navigation.activities.ActivityCommandDecorator;
 import sasd97.java_blog.xyz.gaberlunzie.navigation.activities.Finish;
 import sasd97.java_blog.xyz.gaberlunzie.navigation.activities.MoveForward;
-import sasd97.java_blog.xyz.gaberlunzie.presentation.MainActivity;
+import sasd97.java_blog.xyz.gaberlunzie.presentation.converter.ConverterActivity;
 
 /**
  * Created by alexander on 11/07/2017.
  */
 
-public class SplashScreenActivity
-        extends MvpAppCompatActivity
+public class SplashScreenActivity extends MvpAppCompatActivity
         implements SplashScreenView {
 
     @InjectPresenter SplashScreenPresenter presenter;
@@ -42,7 +41,7 @@ public class SplashScreenActivity
     }
 
     private ActivityCommand obtainNavigationCommand() {
-        ActivityCommandDecorator command = new MoveForward(this, MainActivity.class);
+        ActivityCommandDecorator command = new MoveForward(this, ConverterActivity.class);
         command.setNext(new Finish(this));
         return command;
     }
