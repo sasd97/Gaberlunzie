@@ -9,10 +9,12 @@ import android.view.ViewGroup;
 
 import com.arellomobile.mvp.MvpAppCompatFragment;
 import com.arellomobile.mvp.presenter.InjectPresenter;
+import com.arellomobile.mvp.presenter.ProvidePresenter;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import sasd97.java_blog.xyz.gaberlunzie.GaberlunzieApp;
 import sasd97.java_blog.xyz.gaberlunzie.R;
 import sasd97.java_blog.xyz.gaberlunzie.utils.SwipeDetector;
 
@@ -25,6 +27,15 @@ public class SetupFragment extends MvpAppCompatFragment implements SetupView {
     @BindView(R.id.fragment_setup_gesture_detector) View gestureDetector;
 
     @InjectPresenter SetupPresenter presenter;
+
+    @ProvidePresenter
+    public SetupPresenter providePresenter() {
+        return GaberlunzieApp
+                .get(getContext())
+                .getAppComponent()
+                .plusMainComponent()
+                .provideSetupPresenter();
+    }
 
     private Unbinder unbinder;
 
@@ -43,6 +54,7 @@ public class SetupFragment extends MvpAppCompatFragment implements SetupView {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        presenter.loadRate();
 
         gestureDetector.setOnTouchListener(new SwipeDetector(getContext(), presenter));
     }

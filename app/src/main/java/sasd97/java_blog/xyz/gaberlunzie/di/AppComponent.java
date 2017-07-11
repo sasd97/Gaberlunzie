@@ -15,4 +15,5 @@ import sasd97.java_blog.xyz.gaberlunzie.presentation.splashscreen.SplashScreenAc
 @Singleton
 public interface AppComponent {
     SplashScreenComponent plusSplashScreenComponent();
+    MainComponent plusMainComponent();
 }
