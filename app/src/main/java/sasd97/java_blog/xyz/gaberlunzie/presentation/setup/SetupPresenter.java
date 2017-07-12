@@ -3,6 +3,7 @@ package sasd97.java_blog.xyz.gaberlunzie.presentation.setup;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
+import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 
 import sasd97.java_blog.xyz.gaberlunzie.domain.SetupInteractor;
@@ -14,8 +15,8 @@ import sasd97.java_blog.xyz.gaberlunzie.utils.SwipeDetector;
  * Created by alexander on 11/07/2017.
  */
 
-public class SetupPresenter extends MvpPresenter<SetupView>
-        implements SwipeDetector.OnSwipeListener {
+@InjectViewState
+public class SetupPresenter extends MvpPresenter<SetupView> {
 
     private static final String TAG = SetupPresenter.class.getCanonicalName();
 
@@ -31,28 +32,9 @@ public class SetupPresenter extends MvpPresenter<SetupView>
     public void loadRate() {
         interactor.obtainCurrenciesList()
                 .compose(rxSchedulers.getIOToMainTransformer())
-                .subscribe(rateModel -> {
-                    Log.d(TAG, rateModel.toString());
+                .subscribe(c -> {
+                    getViewState().addTargetCurrency(c);
+                    getViewState().addDestinationCurrency(c);
                 });
-    }
-
-    @Override
-    public void onSwipeRight() {
-        Log.d(TAG, "Swipe Right");
-    }
-
-    @Override
-    public void onSwipeLeft() {
-        Log.d(TAG, "Swipe Left");
-    }
-
-    @Override
-    public void onSwipeTop() {
-        Log.d(TAG, "Swipe Top");
-    }
-
-    @Override
-    public void onSwipeBottom() {
-        Log.d(TAG, "Swipe Bottom");
     }
 }
