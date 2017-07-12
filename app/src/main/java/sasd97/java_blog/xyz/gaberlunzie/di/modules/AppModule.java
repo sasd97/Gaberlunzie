@@ -14,6 +14,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import sasd97.java_blog.xyz.gaberlunzie.data.AppRepository;
 import sasd97.java_blog.xyz.gaberlunzie.data.AppRepositoryImpl;
 import sasd97.java_blog.xyz.gaberlunzie.data.net.CurrencyApi;
+import sasd97.java_blog.xyz.gaberlunzie.data.resources.ResourceManager;
 import sasd97.java_blog.xyz.gaberlunzie.utils.RxSchedulers;
 import sasd97.java_blog.xyz.gaberlunzie.utils.RxSchedulersAbs;
 
@@ -54,8 +55,14 @@ public class AppModule {
 
     @Provides
     @Singleton
-    public AppRepository provideRepository(CurrencyApi api) {
-        return new AppRepositoryImpl(api);
+    public ResourceManager provideResourceManager(Context context) {
+        return new ResourceManager(context);
+    }
+
+    @Provides
+    @Singleton
+    public AppRepository provideRepository(CurrencyApi api, ResourceManager resourceManager) {
+        return new AppRepositoryImpl(api, resourceManager);
     }
 
     @Provides

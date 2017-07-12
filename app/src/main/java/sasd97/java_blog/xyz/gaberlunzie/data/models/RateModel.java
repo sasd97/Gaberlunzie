@@ -1,4 +1,4 @@
-package sasd97.java_blog.xyz.gaberlunzie.data.net;
+package sasd97.java_blog.xyz.gaberlunzie.data.models;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

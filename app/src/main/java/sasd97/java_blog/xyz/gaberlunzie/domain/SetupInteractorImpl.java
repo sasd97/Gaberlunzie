@@ -4,7 +4,8 @@ import android.support.annotation.NonNull;
 
 import io.reactivex.Observable;
 import sasd97.java_blog.xyz.gaberlunzie.data.AppRepository;
-import sasd97.java_blog.xyz.gaberlunzie.data.net.RateModel;
+import sasd97.java_blog.xyz.gaberlunzie.data.models.CurrencyModel;
+import sasd97.java_blog.xyz.gaberlunzie.data.models.RateModel;
 
 /**
  * Created by alexander on 11/07/2017.
@@ -16,6 +17,11 @@ public class SetupInteractorImpl implements SetupInteractor {
 
     public SetupInteractorImpl(@NonNull AppRepository appRepository) {
         this.appRepository = appRepository;
+    }
+
+    @Override
+    public Observable<CurrencyModel> obtainCurrenciesList() {
+        return appRepository.obtainCurrenciesList();
     }
 
     @Override

@@ -29,7 +29,7 @@ public class SetupPresenter extends MvpPresenter<SetupView>
     }
 
     public void loadRate() {
-        interactor.obtainRate("USD", "GBP", "RUB")
+        interactor.obtainCurrenciesList()
                 .compose(rxSchedulers.getIOToMainTransformer())
                 .subscribe(rateModel -> {
                     Log.d(TAG, rateModel.toString());
