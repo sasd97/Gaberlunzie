@@ -11,6 +11,8 @@ import com.arellomobile.mvp.MvpAppCompatFragment;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.arellomobile.mvp.presenter.ProvidePresenter;
 
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -57,6 +59,11 @@ public class SetupFragment extends MvpAppCompatFragment implements SetupView {
         presenter.loadRate();
 
         gestureDetector.setOnTouchListener(new SwipeDetector(getContext(), presenter));
+    }
+
+    @Override
+    public void showTargetCurrencies(List<String> currencies) {
+
     }
 
     @Override

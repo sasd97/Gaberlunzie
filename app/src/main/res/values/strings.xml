@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Gaberlunzie</string>
+    
+    <!-- SetupView region -->
+    <string name="setup_view_target_currency">Target currency</string>
+    <string name="setup_view_destination_currency">Destination currency</string>
+    <!-- Endregion -->
 </resources>
