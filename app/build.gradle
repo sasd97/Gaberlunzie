@@ -24,13 +24,6 @@ android {
     }
 
     signingConfigs {
-        debug {
-            storeFile file(keystoreProperties['debugFile'])
-            keyAlias keystoreProperties['debugAlias']
-            keyPassword keystoreProperties['debugKeyPassword']
-            storePassword keystoreProperties['debugStorePassword']
-        }
-
         release {
             storeFile file(keystoreProperties['releaseFile'])
             keyAlias keystoreProperties['releaseAlias']
@@ -42,7 +35,6 @@ android {
     buildTypes {
         debug {
             minifyEnabled false
-            signingConfig signingConfigs.debug
             applicationIdSuffix '.debug'
             versionNameSuffix '-DEBUG'
         }
