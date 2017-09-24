@@ -12,32 +12,33 @@
 
     <ImageView
         android:id="@+id/row_currency_avatar"
-        android:layout_width="44dp"
-        android:layout_height="44dp"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/guideline2"
+        app:layout_constraintRight_toLeftOf="@+id/delimeter"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/backfield_grey_circle" />
+        app:srcCompat="@drawable/backfield_grey_circle"
+        tools:ignore="ContentDescription" />
 
     <android.support.constraint.Guideline
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/guideline2"
+        android:id="@+id/delimeter"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.3" />
+        app:layout_constraintGuide_percent="0.2" />
 
     <TextView
         android:id="@+id/row_currency_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
-        android:textSize="22sp"
-        app:layout_constraintLeft_toLeftOf="@+id/guideline2"
+        android:textSize="23sp"
+        app:layout_constraintLeft_toLeftOf="@+id/delimeter"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"

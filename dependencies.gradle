@@ -4,8 +4,8 @@ ext.versions = [
 
         minSdk                       : 15,
         targetSdk                    : 25,
-        compileSdk                   : 25,
-        buildTools                   : '25.0.3',
+        compileSdk                   : 26,
+        buildTools                   : '26.0.1',
 
         retrolambdaGradlePlugin      : '3.6.1',
         androidGradlePlugin          : '2.3.3',
@@ -13,11 +13,12 @@ ext.versions = [
         dagger                       : '2.11',
         retrofit                     : '2.3.0',
         moxy                         : '1.5.3',
+        router                       : '0.0.5',
 
         rxjava                       : '2.0.6',
         rxandroid                    : '2.0.1',
 
-        supportLibs                  : '25.3.1',
+        supportLibs                  : '26.1.0',
         constraint                   : '1.0.2',
         butterKnife                  : '8.6.0',
 
@@ -47,6 +48,7 @@ ext.libraries = [
 
         rxjava                  : "io.reactivex.rxjava2:rxjava:$versions.rxjava",
         rxandroid               : "io.reactivex.rxjava2:rxandroid:$versions.rxandroid",
+        router                  : "com.github.sasd97:android-router:$versions.router",
 
         supportAnnotations      : "com.android.support:support-annotations:$versions.supportLibs",
         supportAppCompat        : "com.android.support:appcompat-v7:$versions.supportLibs",

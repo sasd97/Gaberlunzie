@@ -8,7 +8,6 @@ import sasd97.java_blog.xyz.gaberlunzie.domain.SetupInteractor;
 import sasd97.java_blog.xyz.gaberlunzie.domain.SetupInteractorImpl;
 import sasd97.java_blog.xyz.gaberlunzie.presentation.setup.SetupPresenter;
 import sasd97.java_blog.xyz.gaberlunzie.utils.RxSchedulers;
-import sasd97.java_blog.xyz.gaberlunzie.utils.RxSchedulersAbs;
 
 /**
  * Created by alexander on 11/07/2017.
@@ -25,7 +24,7 @@ public class MainModule {
 
     @Provides
     @MainScope
-    public SetupPresenter provideSetupPresenter(SetupInteractor interactor, RxSchedulersAbs rxSchedulers) {
+    public SetupPresenter provideSetupPresenter(SetupInteractor interactor, RxSchedulers rxSchedulers) {
         return new SetupPresenter(interactor, rxSchedulers);
     }
 }

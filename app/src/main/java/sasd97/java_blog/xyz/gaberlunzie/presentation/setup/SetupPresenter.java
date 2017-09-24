@@ -1,15 +1,12 @@
 package sasd97.java_blog.xyz.gaberlunzie.presentation.setup;
 
 import android.support.annotation.NonNull;
-import android.util.Log;
 
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 
 import sasd97.java_blog.xyz.gaberlunzie.domain.SetupInteractor;
 import sasd97.java_blog.xyz.gaberlunzie.utils.RxSchedulers;
-import sasd97.java_blog.xyz.gaberlunzie.utils.RxSchedulersAbs;
-import sasd97.java_blog.xyz.gaberlunzie.utils.SwipeDetector;
 
 /**
  * Created by alexander on 11/07/2017.
@@ -18,23 +15,23 @@ import sasd97.java_blog.xyz.gaberlunzie.utils.SwipeDetector;
 @InjectViewState
 public class SetupPresenter extends MvpPresenter<SetupView> {
 
-    private static final String TAG = SetupPresenter.class.getCanonicalName();
-
     private SetupInteractor interactor;
-    private RxSchedulersAbs rxSchedulers;
+    private RxSchedulers rxSchedulers;
 
     public SetupPresenter(@NonNull SetupInteractor interactor,
-                          @NonNull RxSchedulersAbs rxSchedulers) {
+                          @NonNull RxSchedulers rxSchedulers) {
         this.interactor = interactor;
         this.rxSchedulers = rxSchedulers;
     }
 
-    public void loadRate() {
+    @Override
+    public void attachView(SetupView view) {
+        super.attachView(view);
+
         interactor.obtainCurrenciesList()
-                .compose(rxSchedulers.getIOToMainTransformer())
+                .compose(rxSchedulers.getIoToMainTransformer())
                 .subscribe(c -> {
-                    getViewState().addTargetCurrency(c);
-                    getViewState().addDestinationCurrency(c);
+                    getViewState().addCurrency(c);
                 });
     }
 }

@@ -5,25 +5,39 @@ import android.support.v7.widget.Toolbar;
 
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
+import com.arellomobile.mvp.presenter.ProvidePresenter;
+import com.github.sasd97.lib_router.Router;
+import com.github.sasd97.lib_router.satellites.FragmentSatellite;
+
+import javax.inject.Inject;
+import javax.inject.Named;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import sasd97.java_blog.xyz.gaberlunzie.GaberlunzieApp;
 import sasd97.java_blog.xyz.gaberlunzie.R;
-import sasd97.java_blog.xyz.gaberlunzie.navigation.AppFragmentRouter;
-import sasd97.java_blog.xyz.gaberlunzie.navigation.Router;
-import sasd97.java_blog.xyz.gaberlunzie.navigation.fragments.FragmentCommand;
+
+import static sasd97.java_blog.xyz.gaberlunzie.di.modules.NavigationModule.FRAGMENT_ROUTER;
 
 public class MainActivity extends MvpAppCompatActivity implements MainView {
 
+    @Inject
+    @Named(FRAGMENT_ROUTER)
+    Router fragmentRouter;
+
+    @Inject
     @InjectPresenter
     MainPresenter presenter;
+
+    @ProvidePresenter
+    public MainPresenter provideMainPresenter() {
+        return presenter;
+    }
 
     @BindView(R.id.toolbar) Toolbar toolbar;
 
     private Unbinder unbinder;
-    private Router<FragmentCommand> fragmentRouter
-            = new AppFragmentRouter(R.id.activity_converter_fragment_container, this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +46,15 @@ public class MainActivity extends MvpAppCompatActivity implements MainView {
         setContentView(R.layout.activity_convert);
         unbinder = ButterKnife.bind(this);
 
-        presenter.setRouter(fragmentRouter);
+        GaberlunzieApp.get(this)
+                .getAppComponent()
+                .plusMainComponent()
+                .inject(this);
+
+        fragmentRouter.attachSatellite(new FragmentSatellite(R.id.activity_converter_fragment_container,
+                getApplicationContext(),
+                getSupportFragmentManager()));
+
         if (savedInstanceState == null) onInit();
 
         setSupportActionBar(toolbar);

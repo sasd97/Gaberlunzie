@@ -27,16 +27,10 @@ import sasd97.java_blog.xyz.gaberlunzie.presentation.CurrenciesRecyclerAdapter;
 public class SetupFragment extends MvpAppCompatFragment implements SetupView {
 
     private Unbinder unbinder;
-    private LinearLayoutManager targetLinearLayout = new LinearLayoutManager(getContext());
-    private LinearLayoutManager destinationLinearLayout = new LinearLayoutManager(getContext());
-    private CurrenciesRecyclerAdapter targetAdapter = new CurrenciesRecyclerAdapter();
-    private CurrenciesRecyclerAdapter destinationAdapter = new CurrenciesRecyclerAdapter();
+    private LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+    private CurrenciesRecyclerAdapter currenciesRecyclerAdapter = new CurrenciesRecyclerAdapter();
 
-    @BindView(R.id.setup_fragment_target_currencies_list)
-    public RecyclerView targetCurrenciesRecyclerView;
-
-    @BindView(R.id.setup_fragment_destination_currencies_list)
-    public RecyclerView destinationCurrenciesRecyclerView;
+    @BindView(R.id.setup_fragment_currencies_list) public RecyclerView currenciesRecyclerView;
 
     @InjectPresenter SetupPresenter presenter;
 
@@ -59,27 +53,16 @@ public class SetupFragment extends MvpAppCompatFragment implements SetupView {
         View v = inflater.inflate(R.layout.fragment_setup, container, false);
         unbinder = ButterKnife.bind(this, v);
 
-        presenter.loadRate();
-
-        targetCurrenciesRecyclerView.setHasFixedSize(true);
-        targetCurrenciesRecyclerView.setLayoutManager(targetLinearLayout);
-        targetCurrenciesRecyclerView.setAdapter(targetAdapter);
-
-        destinationCurrenciesRecyclerView.setHasFixedSize(true);
-        destinationCurrenciesRecyclerView.setLayoutManager(destinationLinearLayout);
-        destinationCurrenciesRecyclerView.setAdapter(destinationAdapter);
+        currenciesRecyclerView.setHasFixedSize(true);
+        currenciesRecyclerView.setLayoutManager(linearLayoutManager);
+        currenciesRecyclerView.setAdapter(currenciesRecyclerAdapter);
 
         return v;
     }
 
     @Override
-    public void addTargetCurrency(CurrencyModel currency) {
-        targetAdapter.add(currency);
-    }
-
-    @Override
-    public void addDestinationCurrency(CurrencyModel currency) {
-        destinationAdapter.add(currency);
+    public void addCurrency(CurrencyModel currency) {
+        currenciesRecyclerAdapter.add(currency);
     }
 
     @Override

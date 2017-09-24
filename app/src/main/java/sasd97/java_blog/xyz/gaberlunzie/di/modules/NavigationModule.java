@@ -1,12 +1,13 @@
 package sasd97.java_blog.xyz.gaberlunzie.di.modules;
 
+import com.github.sasd97.lib_router.BaseRouter;
+import com.github.sasd97.lib_router.Router;
+
+import javax.inject.Named;
 import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import sasd97.java_blog.xyz.gaberlunzie.navigation.AppActivityRouter;
-import sasd97.java_blog.xyz.gaberlunzie.navigation.Router;
-import sasd97.java_blog.xyz.gaberlunzie.navigation.activities.ActivityCommand;
 
 /**
  * Created by alexander on 11/07/2017.
@@ -15,9 +16,20 @@ import sasd97.java_blog.xyz.gaberlunzie.navigation.activities.ActivityCommand;
 @Module
 public class NavigationModule {
 
+    public static final String ACTIVITY_ROUTER = "router.activity";
+    public static final String FRAGMENT_ROUTER = "router.fragment";
+
     @Provides
     @Singleton
-    Router<ActivityCommand> provideActivityRouter() {
-        return new AppActivityRouter();
+    @Named(ACTIVITY_ROUTER)
+    Router provideActivityRouter() {
+        return new BaseRouter();
+    }
+
+    @Provides
+    @Singleton
+    @Named(FRAGMENT_ROUTER)
+    Router provideFragmentRouter() {
+        return new BaseRouter();
     }
 }

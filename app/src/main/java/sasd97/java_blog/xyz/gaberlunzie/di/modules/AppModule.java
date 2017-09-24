@@ -15,7 +15,7 @@ import sasd97.java_blog.xyz.gaberlunzie.data.AppRepositoryImpl;
 import sasd97.java_blog.xyz.gaberlunzie.data.net.CurrencyApi;
 import sasd97.java_blog.xyz.gaberlunzie.data.resources.ResourceManager;
 import sasd97.java_blog.xyz.gaberlunzie.utils.RxSchedulers;
-import sasd97.java_blog.xyz.gaberlunzie.utils.RxSchedulersAbs;
+import sasd97.java_blog.xyz.gaberlunzie.utils.RxSchedulersImpl;
 
 /**
  * Created by alexander on 11/07/2017.
@@ -66,7 +66,7 @@ public class AppModule {
 
     @Provides
     @Singleton
-    public RxSchedulersAbs provideRxSchedulers() {
-        return new RxSchedulers();
+    public RxSchedulers provideRxSchedulers() {
+        return new RxSchedulersImpl();
     }
 }

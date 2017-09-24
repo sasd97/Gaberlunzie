@@ -11,6 +11,5 @@ import sasd97.java_blog.xyz.gaberlunzie.data.models.CurrencyModel;
  */
 
 public interface SetupView extends MvpView {
-    void addTargetCurrency(CurrencyModel currency);
-    void addDestinationCurrency(CurrencyModel currency);
+    void addCurrency(CurrencyModel currency);
 }
